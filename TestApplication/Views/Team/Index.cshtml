@@ -20,8 +20,8 @@
   $(document).ready(function () {
     $('#searchString').change(function () {
       var group = $('#searchString option:selected').text();
+      $("#users").empty();
       if (group != "") {
-        $("#users").empty();
         $.ajax({
           url: "Team/GroupDetails",
           method: "POST",
@@ -36,7 +36,7 @@
         $('#groupName').text(group);
       }
       else {
-        $("#usersBlock").css("style", "display: none;");
+        $("#usersBlock").attr("style", "display: none;");
       }
     });
   });
