@@ -1,0 +1,45 @@
+﻿@{
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Team</h2>
+<br />
+<p>
+  <label>Введите имя группы:</label>&nbsp;
+  @Html.DropDownList("SearchString", new SelectList(ViewBag.GroupList, "Value", "Text"), new { id = "searchString" })
+</p>
+<div id="usersBlock" style="display: none;">
+  <p>
+    <label>Пользователи входящие в группу <span id="groupName"></span>:</label>
+  </p>
+  <div id="users">
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#searchString').change(function () {
+      var group = $('#searchString option:selected').text();
+      if (group != "") {
+        $("#users").empty();
+        $.ajax({
+          url: "Team/GroupDetails",
+          method: "POST",
+          data: { searchString: group },
+          dataType: "json",
+          success: function (result) {
+            $("#usersBlock").attr("style", "display: block;");
+            for (var i = 0; i < result.length; i++)
+              $("#users").append("<p>" + result[i].UserName + "</p>");
+          }
+        });
+        $('#groupName').text(group);
+      }
+      else {
+        $("#usersBlock").css("style", "display: none;");
+      }
+    });
+  });
+</script>
+
+
