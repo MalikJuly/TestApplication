@@ -5,12 +5,12 @@
 <h2>Team</h2>
 <br />
 <p>
-  <label>Введите имя группы:</label>&nbsp;
+  <label>Select group name:</label>&nbsp;
   @Html.DropDownList("SearchString", new SelectList(ViewBag.GroupList, "Value", "Text"), new { id = "searchString" })
 </p>
 <div id="usersBlock" style="display: none;">
   <p>
-    <label>Пользователи входящие в группу <span id="groupName"></span>:</label>
+    <label>Group&nbsp;<span id="groupName"></span>&nbsp;members:</label>
   </p>
   <div id="users">
   </div>

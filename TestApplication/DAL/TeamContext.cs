@@ -6,12 +6,15 @@ namespace TestApplication.DAL
 {
   public class TeamContext : DbContext
   {
-    public TeamContext() : base("TeamContext")
-    {
-    }
-
     public DbSet<User> Users { get; set; }
     public DbSet<Group> Groups { get; set; }
+    public DbSet<Contact> Contacts { get; set; }
+    public DbSet<Company> Companies { get; set; }
+
+    static TeamContext()// : base("TeamContext")
+    {
+      Database.SetInitializer<TeamContext>(new TeamInitializer());
+    }
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {

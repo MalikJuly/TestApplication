@@ -45,13 +45,15 @@ namespace TestApplication.Controllers
 
         public List<SelectListItem> GroupList()
         {
-          List<SelectListItem> groupList = new List<SelectListItem>();
-          groupList.Add(new SelectListItem() { Value = "0", Text = "" });
-          var groups = db.Groups.ToList();
-          foreach (var item in groups)
-            groupList.Add(new SelectListItem() { Value = item.ID.ToString(), Text = item.GroupName });
-      
-          return groupList;
+            List<SelectListItem> groupList = new List<SelectListItem>
+            {
+                new SelectListItem() { Value = "0", Text = "" }
+            };
+            var groups = db.Groups.ToList();
+            foreach (var item in groups)
+                groupList.Add(new SelectListItem() { Value = item.ID.ToString(), Text = item.GroupName });
+            
+            return groupList;
         }
     }
 }

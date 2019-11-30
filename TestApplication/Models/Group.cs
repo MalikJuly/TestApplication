@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace TestApplication.Models
+﻿namespace TestApplication.Models
 {
   public class Group
   {
